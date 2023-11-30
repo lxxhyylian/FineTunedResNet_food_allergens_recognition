@@ -70,6 +70,6 @@ if uploaded_file is not None:
                             for j, v in enumerate(output.squeeze())
                             if torch.sigmoid(v) > 0.5])
 
-    st.image(img.squeeze(0).permute(1, 2, 0), caption="Uploaded Image", use_column_width=True)
+    st.image(img.squeeze(0), caption="Uploaded Image", use_column_width=True)
     st.write("Class predictions:")
     st.write(pred_title)
