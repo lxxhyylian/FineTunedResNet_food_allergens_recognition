@@ -45,10 +45,9 @@ class FineTunedResNet(nn.Module):
 
 
 model = FineTunedResNet()
-model_file = './FineTunedResNet_allergens_model_1e-4.pth'
-model.load_state_dict(torch.load(model_file))
+model.load_state_dict(torch.load('./FineTunedResNet_allergens_model_1e-4.pth'))
+model.cpu()
 model.eval()
-
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
