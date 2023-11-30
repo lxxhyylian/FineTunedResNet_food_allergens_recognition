@@ -11,31 +11,13 @@ else:
     device = torch.device("cpu")
     print ("MPS device not found.")
 from skimage.io import imread as imread
-from sentence_transformers import SentenceTransformer, util
-import pandas as pd
-import seaborn as sns
-import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.utils import resample
 from torchvision import transforms
-from torch.utils.data import DataLoader, Dataset
 from PIL import Image
-import imgaug.augmenters as iaa
 import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.models as models
-import tqdm
-import tqdm.notebook as tqdm
-from torch.nn.utils import clip_grad_norm_
-import time
-import torch.optim as optim
-from torch.optim.lr_scheduler import ReduceLROnPlateau
-import textwrap
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, hamming_loss, classification_report
-
-
-
 class FineTunedResNet(nn.Module):
     def __init__(self, num_classes=33):
         super(FineTunedResNet, self).__init__()
@@ -82,7 +64,7 @@ transform = transforms.Compose([
 ])
 
 st.title("lxhyylian-Food Allergens Recognition")
-with open('./allergens.txt', 'r') as file:
+with open('./data/allergens.txt', 'r') as file:
     allergens = [line.strip() for line in file]
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
