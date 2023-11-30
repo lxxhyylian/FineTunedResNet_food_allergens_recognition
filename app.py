@@ -61,15 +61,14 @@ uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png
 
 if uploaded_file is not None:
     img = Image.open(uploaded_file)
-    img = transform(img)
-    img = img.unsqueeze(0)
+    img_tensor = transform(img).unsqueeze(0)
 
     with torch.no_grad():
-        output = model(img)
+        output = model(img_tensor)
         pred_title = ', '.join(['{} ({:2.1f}%)'.format(allergens[j], 100 * torch.sigmoid(output[0, j]).item())
                             for j, v in enumerate(output.squeeze())
                             if torch.sigmoid(v) > 0.5])
 
-    st.image(img[0], caption="Uploaded Image", use_column_width=True)
+    st.image(img, caption="Uploaded Image", use_column_width=True)
     st.write("Class predictions:")
     st.write(pred_title)
