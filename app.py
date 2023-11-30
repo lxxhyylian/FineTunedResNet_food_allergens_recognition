@@ -45,7 +45,7 @@ class FineTunedResNet(nn.Module):
 
 
 model = FineTunedResNet()
-model.load_state_dict(torch.load('./FineTunedResNet_allergens_model_1e-4.pth'))
+model.load_state_dict(torch.load('./FineTunedResNet_allergens_model_1e-4.pth', map_location='cpu'))
 model.cpu()
 model.eval()
 
