@@ -70,5 +70,4 @@ if uploaded_file is not None:
                             if torch.sigmoid(v) > 0.5])
 
     st.image(img, caption="Uploaded Image", use_column_width=True)
-    st.write("Class predictions:")
-    st.write(pred_title)
+    st.write("Predicted allergens in food: ", pred_title)
