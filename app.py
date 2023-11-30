@@ -3,13 +3,6 @@ import streamlit as st
 import subprocess
 subprocess.call(["pip", "install", "-r", "./requirements.txt"])
 import torch
-if torch.backends.mps.is_available():
-    device = torch.device("mps")
-    x = torch.ones(1, device=device)
-    print (x)
-else:
-    device = torch.device("cpu")
-    print ("MPS device not found.")
 from skimage.io import imread as imread
 from sklearn.utils import resample
 from torchvision import transforms
@@ -54,7 +47,6 @@ class FineTunedResNet(nn.Module):
 model = FineTunedResNet()
 model_file = './FineTunedResNet_allergens_model_1e-4.pth'
 model.load_state_dict(torch.load(model_file))
-model.to(device)
 model.eval()
 
 
@@ -74,12 +66,11 @@ if uploaded_file is not None:
     img = img.unsqueeze(0)
 
     with torch.no_grad():
-        img = img.to(device)
         output = model(img)
         pred_title = ', '.join(['{} ({:2.1f}%)'.format(allergens[j], 100 * torch.sigmoid(output[0, j]).item())
                             for j, v in enumerate(output.squeeze())
                             if torch.sigmoid(v) > 0.5])
 
-    st.image(img.squeeze(0).cpu().permute(1, 2, 0), caption="Uploaded Image", use_column_width=True)
+    st.image(img.squeeze(0).permute(1, 2, 0), caption="Uploaded Image", use_column_width=True)
     st.write("Class predictions:")
     st.write(pred_title)
