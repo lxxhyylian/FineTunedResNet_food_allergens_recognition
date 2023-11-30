@@ -1,0 +1,21 @@
+pandas==2.1.1
+numpy==1.26.1
+matplotlib==3.8.0
+torch==2.1.0
+torch-optimizer==0.3.0
+torchaudio==2.1.0
+torchmetrics==1.2.0
+torchsampler==0.1.2
+torchsummary==1.5.1
+torchvision==0.16.0
+imgaug==0.4.0
+scikit-image @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_12rg0hdzgk/croot/scikit-image_1682528304529/work
+scikit-learn==1.3.1
+scikit-multilearn==0.2.0
+streamlit==1.28.2
+sentence-transformers==2.2.2
+jinja2-time @ file:///opt/conda/conda-bld/jinja2-time_1649251842261/work
+tqdm @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_ac7zic_tin/croot/tqdm_1679561870178/work
+Pillow @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_e520izeg80/croot/pillow_1695134016966/work
+seaborn @ file:///Users/cbousseau/work/recipes/ci_py311/seaborn_1677961968762/work
+matplotlib-inline @ file:///Users/cbousseau/work/recipes/ci_py311/matplotlib-inline_1677918241899/work
